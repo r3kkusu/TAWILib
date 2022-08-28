@@ -53,10 +53,10 @@ public class WelcomeFragment extends BaseFragment {
 
 
         btnSignIn.setOnClickListener(v -> {
-            navigate(new SignInFragment());
+            navigate(new SignInFragment(listener));
         });
         btnSignUp.setOnClickListener(v -> {
-            navigate(new SignUpFragment());
+            navigate(new SignUpFragment(listener));
         });
     }
 

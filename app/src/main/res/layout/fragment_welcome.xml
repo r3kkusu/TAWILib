@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tawi_library"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <TextView
@@ -21,20 +21,22 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="@string/welcome"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="italic" />
 
     <Button
         android:id="@+id/btn_sign_in"
-        android:layout_width="100dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_button"
         android:text="@string/sign_in" />
 
     <Button
         android:id="@+id/btn_sign_up"
-        android:layout_width="100dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_button"
         android:text="@string/sign_up" />
 </LinearLayout>

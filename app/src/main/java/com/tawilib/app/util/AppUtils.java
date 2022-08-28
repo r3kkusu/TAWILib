@@ -1,6 +1,9 @@
 package com.tawilib.app.util;
 
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 
@@ -18,5 +21,19 @@ public class AppUtils {
                 .beginTransaction();
         transaction.replace(fragmentView, fragment);
         transaction.commit();
+    }
+
+    public static void hideKeyboard(BaseActivity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(BaseActivity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static void toastMessage(BaseActivity activity, String message, int length) {
+        Toast toast = Toast.makeText( activity, message, length);
+        toast.show();
     }
 }

@@ -5,6 +5,7 @@ import com.tawilib.app.di.auth.AuthModule;
 import com.tawilib.app.di.auth.AuthScope;
 import com.tawilib.app.di.auth.AuthViewModelsModule;
 import com.tawilib.app.ui.auth.AuthActivity;
+import com.tawilib.app.ui.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -15,4 +16,9 @@ public abstract class ActivityBuildersModule  {
     @ContributesAndroidInjector(
             modules = { AuthViewModelsModule.class, AuthModule.class, AuthFragmentBuildersModule.class })
     abstract AuthActivity contributeAuthActivity();
+
+    @AuthScope
+    @ContributesAndroidInjector(
+            modules = {  })
+    abstract MainActivity contributeMainActivity();
 }

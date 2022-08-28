@@ -1,4 +1,4 @@
-package com.tawilib.app.ui.auth;
+package com.tawilib.app.ui.auth.signup;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,15 +10,15 @@ import com.tawilib.app.ui.common.Resource;
 
 import javax.inject.Inject;
 
-public class AuthViewModel extends ViewModel {
+public class SignUpViewModel extends ViewModel {
 
-    private static final String TAG = "AuthViewModel";
+    private static final String TAG = "SignUpViewModel";
 
     private FirebaseAuth firebaseAuth;
     private MutableLiveData<Resource<FirebaseUser>> firebaseUser;
 
     @Inject
-    public AuthViewModel(FirebaseAuth firebaseAuth) {
+    public SignUpViewModel(FirebaseAuth firebaseAuth) {
         this.firebaseAuth = firebaseAuth;
         this.firebaseUser = new MutableLiveData<>();
     }
@@ -27,22 +27,19 @@ public class AuthViewModel extends ViewModel {
         return firebaseUser;
     }
 
-    public void authenticate() {
+    public void register(String username, String password) {
         firebaseUser.postValue(Resource.loading(null));
-        if (firebaseAuth.getCurrentUser() != null) {
-            firebaseUser.postValue(Resource.success(firebaseAuth.getCurrentUser()));
-        }
-    }
-
-    public void authenticate(String username, String password) {
-        firebaseUser.postValue(Resource.loading(null));
-        firebaseAuth.signInWithEmailAndPassword(username, password)
+        firebaseAuth.createUserWithEmailAndPassword(username, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         firebaseUser.postValue(Resource.success(firebaseAuth.getCurrentUser()));
                     } else {
-                        firebaseUser.postValue(Resource.error("Invalid account", null));
+                        firebaseUser.postValue(Resource.error(task.getException().getMessage(), null));
                     }
                 });
+    }
+
+    public void logout() {
+        this.firebaseAuth.signOut();
     }
 }

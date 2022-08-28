@@ -12,11 +12,18 @@ import android.view.ViewGroup;
 
 import com.tawilib.app.R;
 import com.tawilib.app.ui.BaseFragment;
+import com.tawilib.app.ui.auth.AuthFragmentNavListener;
 
 public class SignInFragment extends BaseFragment {
 
+    private AuthFragmentNavListener listener;
+
     public SignInFragment() {
         // Required empty public constructor
+    }
+
+    public SignInFragment(AuthFragmentNavListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -34,5 +41,11 @@ public class SignInFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void navigate(BaseFragment fragment) {
+        if (listener != null) {
+            listener.onNavigate(fragment);
+        }
     }
 }
