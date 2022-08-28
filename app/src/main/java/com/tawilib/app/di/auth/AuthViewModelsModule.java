@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.tawilib.app.di.ViewModelKey;
 import com.tawilib.app.ui.auth.AuthViewModel;
+import com.tawilib.app.ui.auth.signin.SignInViewModel;
 import com.tawilib.app.ui.auth.signup.SignUpViewModel;
 
 import dagger.Binds;
@@ -22,4 +23,9 @@ public abstract class AuthViewModelsModule {
     @IntoMap
     @ViewModelKey(SignUpViewModel.class)
     public abstract ViewModel bindSignUpViewModel(SignUpViewModel viewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SignInViewModel.class)
+    public abstract ViewModel bindSignInViewModel(SignInViewModel viewModel);
 }

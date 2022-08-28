@@ -1,17 +1,20 @@
 <resources>
     <string name="app_name">TAWILib</string>
     <string name="tawi_library">TAWI LIBRARY</string>
-    <string name="welcome">welcome</string>
 
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
 
-    <string name="back">BACK</string>
-
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="conf_password">Confirm Password</string>
+
     <string name="failed_register">Failed to register account! Please retry.</string>
     <string name="retry">Retry</string>
+
+    <string name="welcome">welcome</string>
+    <string name="back">BACK</string>
+
     <string name="registration_successful">Registration Successful</string>
+    <string name="login_successful">Login Successful</string>
 </resources>
