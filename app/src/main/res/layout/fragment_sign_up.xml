@@ -8,21 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.auth.signup.SignUpFragment">
 
-    <FrameLayout
-        android:id="@+id/layout_load"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#33000000"
-        android:visibility="gone">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center" />
-    </FrameLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -117,5 +102,20 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
 </FrameLayout>

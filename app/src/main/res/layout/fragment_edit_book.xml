@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3E3E3"
     tools:context=".ui.main.add.EditBookFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,22 +33,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <TextView
                 android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@null"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                android:src="@drawable/ic_baseline_delete_24"
+                android:layout_margin="15dp"
+                android:drawableEnd="@drawable/ic_baseline_delete_24"
+                android:text="@string/delete"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:drawableTint="@color/secondaryColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/secondaryColor"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
@@ -73,7 +72,7 @@
                     android:layout_marginBottom="10dp"
                     android:autofillHints=""
                     android:background="@drawable/shape_text"
-                    android:digits="abcdefghijklmnopqrstuvwxyz1234567890 "
+                    android:digits="@string/regex_type_1"
                     android:ems="10"
                     android:hint="@string/title"
                     android:inputType="textEmailAddress"
@@ -94,7 +93,7 @@
                     android:layout_marginBottom="10dp"
                     android:autofillHints=""
                     android:background="@drawable/shape_text"
-                    android:digits="abcdefghijklmnopqrstuvwxyz1234567890-. "
+                    android:digits="@string/regex_type_2"
                     android:ems="10"
                     android:hint="@string/author"
                     android:inputType="textEmailAddress"
@@ -114,7 +113,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_text"
-                    android:digits="abcdefghijklmnopqrstuvwxyz1234567890 "
+                    android:digits="@string/regex_type_1"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/about_"
@@ -156,7 +155,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textStyle="bold|italic" />
 
                 </LinearLayout>
@@ -211,4 +210,20 @@
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
 </FrameLayout>

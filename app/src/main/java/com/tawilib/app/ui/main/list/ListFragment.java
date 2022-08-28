@@ -19,9 +19,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.RequestManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.StorageReference;
 import com.tawilib.app.R;
+import com.tawilib.app.data.model.Book;
 import com.tawilib.app.ui.BaseActivity;
 import com.tawilib.app.ui.BaseFragment;
 import com.tawilib.app.ui.auth.AuthActivity;
@@ -37,12 +40,18 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class ListFragment extends BaseFragment {
+public class ListFragment extends BaseFragment implements BooksAdapter.OnClickListener {
 
     private static final String TAG = "ListFragment";
 
     @Inject
     ViewModelProviderFactory providerFactory;
+
+    @Inject
+    StorageReference storageReference;
+
+    @Inject
+    RequestManager requestManager;
 
     @BindView(R.id.txt_username)
     TextView txtUsername;
@@ -85,6 +94,9 @@ public class ListFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         BooksAdapter booksAdapter = new BooksAdapter(getContext(), new ArrayList<>());
+        booksAdapter.setRequestManager(requestManager);
+        booksAdapter.setFirebaseStorage(storageReference);
+        booksAdapter.setOnClickListener(this);
 
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
         listView.setAdapter(booksAdapter);
@@ -102,7 +114,7 @@ public class ListFragment extends BaseFragment {
         });
         viewModel.loadUser();
 
-        viewModel.getBooks().observe(getActivity(), result -> {
+        viewModel.getBookCollection().observe(getActivity(), result -> {
             layoutLoad.setVisibility(View.GONE);
             switch (result.status) {
                 case SUCCESS: {
@@ -120,12 +132,16 @@ public class ListFragment extends BaseFragment {
                 }
             }
         });
-        viewModel.loadBooks();
 
         btnLogout.setOnClickListener(v -> logout());
 
 
         btnAddBook.setOnClickListener(v -> navigate(new EditBookFragment(listener)));
+    }
+
+    @Override
+    public void onClick(Book book) {
+        navigate(new EditBookFragment(listener, book));
     }
 
     private void logout() {
@@ -145,6 +161,7 @@ public class ListFragment extends BaseFragment {
             welcomeScreen();
         } else {
             txtUsername.setText(firebaseUser.getEmail());
+            viewModel.loadBookCollection();
         }
     }
 

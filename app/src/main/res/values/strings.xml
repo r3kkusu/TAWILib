@@ -15,6 +15,7 @@
     <string name="welcome">welcome</string>
     <string name="back">BACK</string>
     <string name="search">Search</string>
+    <string name="delete">DELETE</string>
 
     <string name="registration_successful">Registration successful. Now sign in with your new account</string>
     <string name="login_successful">Login Successful</string>
@@ -38,6 +39,7 @@
 
     <string name="_continue">Continue</string>
     <string name="are_you_sure_you_logout">Are you want to logout?</string>
+    <string name="discard_all_changes">Discard all changes?</string>
 
     <string name="yes">YES</string>
     <string name="no">NO</string>
@@ -50,4 +52,11 @@
     <string name="gallery_tap">GALLERY (TAP)</string>
     <string name="camera">Camera</string>
     <string name="cancel">Cancel</string>
+
+    <string name="please_fill_up_missing_fields">Please fill up missing fields! (Mark Red)</string>
+    <string name="please_add_book_cover">Please add book cover!</string>
+
+    <string name="book_successfully_added">Book successfully added to library!</string>
+    <string name="book_successfully_updated">Book successfully updated to library!</string>
+    <string name="book_successfully_deleted">Book successfully deleted to library!</string>
 </resources>

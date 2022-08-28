@@ -28,9 +28,4 @@ public class DateUtils {
         return format(localDateTime, format);
     }
 
-
-//        long unixTimeStamp = DateUtils.getUnixTimeStamp(localDateTime);
-//        Log.d(TAG, "setDateTime: unix = " + unixTimeStamp);
-//        Log.d(TAG, "setDateTime: localDateTime_unx = " + DateUtils.format(unixTimeStamp, DateUtils.LOCAL_DATE_TIME_FORMAT_1));
-//        Log.d(TAG, "setDateTime: localDateTime_sfd = " + DateUtils.format(localDateTime, DateUtils.LOCAL_DATE_TIME_FORMAT_1));
 }

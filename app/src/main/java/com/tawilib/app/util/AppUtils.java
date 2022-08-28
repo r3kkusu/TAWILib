@@ -5,10 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.tawilib.app.R;
 import com.tawilib.app.ui.BaseActivity;
 import com.tawilib.app.ui.auth.signup.SignUpFragment;
@@ -41,13 +43,13 @@ public class AppUtils {
         toast.show();
     }
 
-    public static boolean isValidString(Context context, EditText editText) {
+    public static boolean isValidString(Context context, TextView editText) {
         boolean isEmpty = editText.getText().toString().isEmpty();
         isValidField(context, editText, isEmpty);
         return !isEmpty;
     }
 
-    public static void isValidField(Context context, EditText editText, boolean isValid) {
+    public static void isValidField(Context context, TextView editText, boolean isValid) {
         if (isValid) {
             editText.setBackground(context.getDrawable(R.drawable.shape_text_error));
         } else {
@@ -55,5 +57,20 @@ public class AppUtils {
         }
     }
 
+    public static boolean isNotEmpty(TextView ...textViews) {
+
+        for (TextView textView: textViews) {
+            if (textView.getText().toString().length() > 0)
+                return true;
+        }
+
+        return false;
+    }
+
+    public static void SnackbarMessage(View layout, String message, int length, String retryMsg, View.OnClickListener onClickListener) {
+        Snackbar snackbar = Snackbar.make(layout, message, length)
+                .setAction(retryMsg, onClickListener);
+        snackbar.show();
+    }
 
 }
