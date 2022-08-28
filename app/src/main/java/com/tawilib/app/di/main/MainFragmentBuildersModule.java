@@ -1,7 +1,7 @@
 package com.tawilib.app.di.main;
 
 
-import com.tawilib.app.ui.main.add.AddFragment;
+import com.tawilib.app.ui.main.add.EditBookFragment;
 import com.tawilib.app.ui.main.list.ListFragment;
 import com.tawilib.app.ui.main.update.UpdateFragment;
 
@@ -15,8 +15,5 @@ public abstract class MainFragmentBuildersModule {
     abstract ListFragment contributeListFragment();
 
     @ContributesAndroidInjector
-    abstract AddFragment contributeAddFragment();
-
-    @ContributesAndroidInjector
-    abstract UpdateFragment contributeUpdateFragment();
+    abstract EditBookFragment contributeEditBookFragment();
 }

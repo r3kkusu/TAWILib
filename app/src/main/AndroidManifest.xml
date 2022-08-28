@@ -4,6 +4,9 @@
     package="com.tawilib.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".TAWILibApplication"
@@ -16,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TAWILib"
         tools:targetApi="31">
+
         <activity
             android:name=".ui.auth.AuthActivity"
             android:exported="true">
@@ -25,7 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
     </application>
 
 </manifest>

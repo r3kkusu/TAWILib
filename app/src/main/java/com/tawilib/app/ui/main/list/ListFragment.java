@@ -1,22 +1,34 @@
 package com.tawilib.app.ui.main.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseUser;
 import com.tawilib.app.R;
+import com.tawilib.app.ui.BaseActivity;
 import com.tawilib.app.ui.BaseFragment;
+import com.tawilib.app.ui.auth.AuthActivity;
 import com.tawilib.app.ui.common.FragmentNavListener;
 import com.tawilib.app.ui.common.adapter.BooksAdapter;
+import com.tawilib.app.ui.main.add.EditBookFragment;
+import com.tawilib.app.util.AppUtils;
 import com.tawilib.app.viewmodels.ViewModelProviderFactory;
 
 import java.util.ArrayList;
@@ -31,6 +43,15 @@ public class ListFragment extends BaseFragment {
 
     @Inject
     ViewModelProviderFactory providerFactory;
+
+    @BindView(R.id.txt_username)
+    TextView txtUsername;
+
+    @BindView(R.id.btn_logout)
+    ImageButton btnLogout;
+
+    @BindView(R.id.btn_add_book)
+    FloatingActionButton btnAddBook;
 
     @BindView(R.id.list_view)
     RecyclerView listView;
@@ -69,11 +90,23 @@ public class ListFragment extends BaseFragment {
         listView.setAdapter(booksAdapter);
 
         viewModel = new ViewModelProvider(this, providerFactory).get(ListViewModel.class);
-        viewModel.getBooks().observe(getActivity(), resource -> {
-            layoutLoad.setVisibility(View.GONE);
-            switch (resource.status) {
+
+        viewModel.getFirebaseUser().observe(getActivity(), result -> {
+
+            switch (result.status) {
                 case SUCCESS: {
-                    booksAdapter.setBooks(resource.data);
+                    prepUserAccount(result.data);
+                    break;
+                }
+            }
+        });
+        viewModel.loadUser();
+
+        viewModel.getBooks().observe(getActivity(), result -> {
+            layoutLoad.setVisibility(View.GONE);
+            switch (result.status) {
+                case SUCCESS: {
+                    booksAdapter.setBooks(result.data);
                     booksAdapter.notifyDataSetChanged();
                     break;
                 }
@@ -88,5 +121,42 @@ public class ListFragment extends BaseFragment {
             }
         });
         viewModel.loadBooks();
+
+        btnLogout.setOnClickListener(v -> logout());
+
+
+        btnAddBook.setOnClickListener(v -> navigate(new EditBookFragment(listener)));
+    }
+
+    private void logout() {
+        new AlertDialog.Builder(getContext())
+                .setTitle(getString(R.string._continue))
+                .setMessage(getString(R.string.are_you_sure_you_logout))
+                .setPositiveButton(R.string.yes, (dialog, which) -> {
+                    viewModel.logout();
+                })
+                .setNegativeButton(R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    private void prepUserAccount(FirebaseUser firebaseUser) {
+        if (firebaseUser == null) {
+            welcomeScreen();
+        } else {
+            txtUsername.setText(firebaseUser.getEmail());
+        }
+    }
+
+    private void welcomeScreen() {
+        Log.d(TAG, "logout!");
+
+        BaseActivity activity = (BaseActivity) getActivity();
+
+        AppUtils.toastMessage(activity, "Logout!", Toast.LENGTH_LONG);
+
+        Intent intent = new Intent(getContext(), AuthActivity.class);
+        startActivity(intent);
+        activity.finish();
     }
 }

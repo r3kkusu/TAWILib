@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.tawilib.app"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -24,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
     }
 }
 
@@ -44,11 +44,11 @@ dependencies {
     // Material DateTime Picker
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 
-    // Croppy
-    implementation 'com.github.lyrebirdstudio:Croppy:0.2'
+    // android-crop
+    implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
 
     // RxJava
-    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
+//    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
 
     // Recyclerview
     implementation "androidx.recyclerview:recyclerview:1.2.1"

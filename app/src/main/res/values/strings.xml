@@ -16,7 +16,7 @@
     <string name="back">BACK</string>
     <string name="search">Search</string>
 
-    <string name="registration_successful">Registration Successful</string>
+    <string name="registration_successful">Registration successful. Now sign in with your new account</string>
     <string name="login_successful">Login Successful</string>
 
     <string name="my_name">My Name</string>
@@ -28,12 +28,26 @@
     </string>
     <string name="book_date">Thu Aug 25 2022 11:05:39 GMT+0800</string>
 
-    <string name="about">About</string>
+    <string name="title">Title</string>
     <string name="author">Author</string>
+    <string name="about">About</string>
+    <string name="about_">About...</string>
+    <string name="date_tap">Date (Tap)</string>
+
+    <string name="movie_cover">MOVIE COVER</string>
 
     <string name="_continue">Continue</string>
     <string name="are_you_sure_you_logout">Are you want to logout?</string>
 
     <string name="yes">YES</string>
     <string name="no">NO</string>
+
+    <string name="save">save</string>
+    <string name="books">Books</string>
+
+    <string name="options">Options</string>
+    <string name="select_media_options">Select media options</string>
+    <string name="gallery_tap">GALLERY (TAP)</string>
+    <string name="camera">Camera</string>
+    <string name="cancel">Cancel</string>
 </resources>

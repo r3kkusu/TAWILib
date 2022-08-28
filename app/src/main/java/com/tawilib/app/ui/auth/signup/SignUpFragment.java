@@ -116,9 +116,9 @@ public class SignUpFragment extends BaseFragment {
 
         AppUtils.hideKeyboard((BaseActivity) getActivity());
 
-        boolean isValid = isValidString(txtEmail)
-                && isValidString(txtPassword)
-                && isValidString(txtConfPassword)
+        boolean isValid = AppUtils.isValidString(getContext(), txtEmail)
+                && AppUtils.isValidString(getContext(), txtPassword)
+                && AppUtils.isValidString(getContext(), txtConfPassword)
                 && isPasswordsValid();
 
         if (isValid) {
@@ -129,26 +129,11 @@ public class SignUpFragment extends BaseFragment {
 
     }
 
-    private boolean isValidString(EditText editText) {
-        boolean isEmpty = editText.getText().toString().isEmpty();
-        if (isEmpty) {
-            editText.setBackground(getResources().getDrawable(R.drawable.shape_text_error));
-        } else {
-            editText.setBackground(getResources().getDrawable(R.drawable.shape_text));
-        }
-
-        return !isEmpty;
-    }
-
     public boolean isPasswordsValid() {
         String password = txtPassword.getText().toString();
         String confPassword = txtConfPassword.getText().toString();
         boolean isValid = password.equalsIgnoreCase(confPassword);
-        if (isValid) {
-            txtConfPassword.setBackground(getResources().getDrawable(R.drawable.shape_text));
-        } else {
-            txtConfPassword.setBackground(getResources().getDrawable(R.drawable.shape_text_error));
-        }
+        AppUtils.isValidField(getContext(), txtConfPassword, isValid);
         return isValid;
     }
 

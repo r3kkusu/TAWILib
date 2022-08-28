@@ -115,8 +115,8 @@ public class SignInFragment extends BaseFragment {
 
         AppUtils.hideKeyboard((BaseActivity) getActivity());
 
-        boolean isValid = isValidString(txtEmail)
-                && isValidString(txtPassword);
+        boolean isValid = AppUtils.isValidString(getContext(), txtEmail)
+                && AppUtils.isValidString(getContext(), txtPassword);
 
         if (isValid) {
             String username = txtEmail.getText().toString();
@@ -136,16 +136,5 @@ public class SignInFragment extends BaseFragment {
         startActivity(intent);
 
         activity.finish();
-    }
-
-    private boolean isValidString(EditText editText) {
-        boolean isEmpty = editText.getText().toString().isEmpty();
-        if (isEmpty) {
-            editText.setBackground(getResources().getDrawable(R.drawable.shape_text_error));
-        } else {
-            editText.setBackground(getResources().getDrawable(R.drawable.shape_text));
-        }
-
-        return !isEmpty;
     }
 }
