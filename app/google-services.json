@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "705660992737",
+    "project_id": "tawi-app",
+    "storage_bucket": "tawi-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705660992737:android:b06afb1d867e0135e08ba0",
+        "android_client_info": {
+          "package_name": "com.tawilib.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705660992737-fh2plna6hrh3abl3ig5eo5kb9bd8cfjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnw2c6nTJ-Px4BH0aHNvMh4pCAYxl43As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705660992737-fh2plna6hrh3abl3ig5eo5kb9bd8cfjr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
