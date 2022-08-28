@@ -1,6 +1,5 @@
 package com.tawilib.app.ui.auth.signin;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tawilib.app.R;
 import com.tawilib.app.ui.BaseActivity;
 import com.tawilib.app.ui.BaseFragment;
-import com.tawilib.app.ui.auth.AuthFragmentNavListener;
+import com.tawilib.app.ui.common.FragmentNavListener;
 import com.tawilib.app.ui.auth.welcome.WelcomeFragment;
 import com.tawilib.app.ui.main.MainActivity;
 import com.tawilib.app.util.AppUtils;
@@ -56,15 +55,13 @@ public class SignInFragment extends BaseFragment {
     @BindView(R.id.layout_root)
     FrameLayout layoutRoot;
 
-    private AuthFragmentNavListener listener;
-
     private SignInViewModel viewModel;
 
     public SignInFragment() {
         // Required empty public constructor
     }
 
-    public SignInFragment(AuthFragmentNavListener listener) {
+    public SignInFragment(FragmentNavListener listener) {
         this.listener = listener;
     }
 
@@ -150,11 +147,5 @@ public class SignInFragment extends BaseFragment {
         }
 
         return !isEmpty;
-    }
-
-    private void navigate(BaseFragment fragment) {
-        if (listener != null) {
-            listener.onNavigate(fragment);
-        }
     }
 }

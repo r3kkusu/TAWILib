@@ -1,8 +1,8 @@
 package com.tawilib.app.di;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import com.tawilib.app.viewmodels.ViewModelProviderFactory;
+
+import androidx.lifecycle.ViewModelProvider;
 
 import dagger.Binds;
 import dagger.Module;

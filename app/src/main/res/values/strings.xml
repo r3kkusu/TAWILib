@@ -14,7 +14,26 @@
 
     <string name="welcome">welcome</string>
     <string name="back">BACK</string>
+    <string name="search">Search</string>
 
     <string name="registration_successful">Registration Successful</string>
     <string name="login_successful">Login Successful</string>
+
+    <string name="my_name">My Name</string>
+
+    <string name="book_cover">MY BOOK COVER</string>
+    <string name="book_author">Author: Daniel Craige</string>
+    <string name="book_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip…
+    </string>
+    <string name="book_date">Thu Aug 25 2022 11:05:39 GMT+0800</string>
+
+    <string name="about">About</string>
+    <string name="author">Author</string>
+
+    <string name="_continue">Continue</string>
+    <string name="are_you_sure_you_logout">Are you want to logout?</string>
+
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 </resources>

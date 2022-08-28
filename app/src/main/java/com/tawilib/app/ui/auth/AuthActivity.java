@@ -10,13 +10,14 @@ import com.tawilib.app.R;
 import com.tawilib.app.ui.BaseActivity;
 import com.tawilib.app.ui.BaseFragment;
 import com.tawilib.app.ui.auth.welcome.WelcomeFragment;
+import com.tawilib.app.ui.common.FragmentNavListener;
 import com.tawilib.app.ui.main.MainActivity;
 import com.tawilib.app.util.AppUtils;
 import com.tawilib.app.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
-public class AuthActivity extends BaseActivity implements AuthFragmentNavListener {
+public class AuthActivity extends BaseActivity implements FragmentNavListener {
 
     private static final String TAG = "AuthActivity";
 
@@ -45,7 +46,7 @@ public class AuthActivity extends BaseActivity implements AuthFragmentNavListene
     }
 
     private void showWelcomeFragment() {
-        AppUtils.replaceFragment(this, new WelcomeFragment(this), R.id.fragment_view);
+        AppUtils.replaceFragment(this, new WelcomeFragment(this), R.id.layout_fragment);
     }
 
     private void isAuthenticated(){
@@ -57,6 +58,6 @@ public class AuthActivity extends BaseActivity implements AuthFragmentNavListene
 
     @Override
     public void onNavigate(BaseFragment fragment) {
-        AppUtils.replaceFragment(this, fragment, R.id.fragment_view);
+        AppUtils.replaceFragment(this, fragment, R.id.layout_fragment);
     }
 }

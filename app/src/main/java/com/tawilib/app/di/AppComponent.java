@@ -22,8 +22,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
 )
 public interface AppComponent extends AndroidInjector<TAWILibApplication> {
 
-//    SessionManager sessionManager();
-
     @Component.Builder
     interface Builder{
 

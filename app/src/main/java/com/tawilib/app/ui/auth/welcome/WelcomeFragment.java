@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.tawilib.app.R;
 import com.tawilib.app.ui.BaseFragment;
-import com.tawilib.app.ui.auth.AuthFragmentNavListener;
+import com.tawilib.app.ui.common.FragmentNavListener;
 import com.tawilib.app.ui.auth.signin.SignInFragment;
 import com.tawilib.app.ui.auth.signup.SignUpFragment;
 
@@ -28,11 +28,9 @@ public class WelcomeFragment extends BaseFragment {
     @BindView(R.id.btn_sign_up)
     Button btnSignUp;
 
-    private AuthFragmentNavListener listener;
-
     public WelcomeFragment() {}
 
-    public WelcomeFragment(AuthFragmentNavListener listener) {
+    public WelcomeFragment(FragmentNavListener listener) {
         this.listener = listener;
     }
 
@@ -59,11 +57,4 @@ public class WelcomeFragment extends BaseFragment {
             navigate(new SignUpFragment(listener));
         });
     }
-
-    private void navigate(BaseFragment fragment) {
-        if (listener != null) {
-            listener.onNavigate(fragment);
-        }
-    }
-
 }

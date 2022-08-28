@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tawilib.app.R;
 import com.tawilib.app.ui.BaseActivity;
 import com.tawilib.app.ui.BaseFragment;
-import com.tawilib.app.ui.auth.AuthFragmentNavListener;
+import com.tawilib.app.ui.common.FragmentNavListener;
 import com.tawilib.app.ui.auth.welcome.WelcomeFragment;
 import com.tawilib.app.util.AppUtils;
 import com.tawilib.app.viewmodels.ViewModelProviderFactory;
@@ -56,15 +56,13 @@ public class SignUpFragment extends BaseFragment {
     @BindView(R.id.layout_root)
     FrameLayout layoutRoot;
 
-    private AuthFragmentNavListener listener;
-
     private SignUpViewModel viewModel;
 
     public SignUpFragment() {
         // Required empty public constructor
     }
 
-    public SignUpFragment(AuthFragmentNavListener listener) {
+    public SignUpFragment(FragmentNavListener listener) {
         this.listener = listener;
     }
 
@@ -160,11 +158,5 @@ public class SignUpFragment extends BaseFragment {
         viewModel.logout();
 
         navigate(new WelcomeFragment(listener));
-    }
-
-    private void navigate(BaseFragment fragment) {
-        if (listener != null) {
-            listener.onNavigate(fragment);
-        }
     }
 }
